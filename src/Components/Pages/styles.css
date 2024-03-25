@@ -1,0 +1,28 @@
+.gridey{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.item .page-link{
+    border-radius: 50px;
+}
+button{
+    border-radius: 50px;
+}
+.review{
+    background: white;
+    box-shadow: 5px 5px 5px gray;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.review img{
+    border-radius: 50px;
+}
+.rev{
+    gap: 24px;
+}
+
+@media  screen and (max-width:800px) {
+    .chotu{
+        opacity: 1;
+    }
+}
