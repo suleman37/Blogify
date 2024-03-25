@@ -1,26 +1,14 @@
 import React, { useEffect, useState } from "react";
-// import Data from "../../blog.json";
 import { Link } from "react-router-dom";
-// import Data from "../../blog.json"
+import data from "../../blog.json";
 
 const Home = () => {
-  const [dice, setDice] = useState([]);
-  const FetchApi = () => {
-    fetch(
-      "https://newsapi.org/v2/everything?q=apple&from=2024-02-29&to=2024-02-29&sortBy=popularity&apiKey=441edc7e840d473eb549be2755f91653"
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let parsed = data.articles;
-        console.log(parsed);
-        setDice(parsed);
-      });
-  };
-  useEffect(() => {
-    FetchApi();
-  }, []);
+  const itemsPerPage = 83;
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
+  // const [dice, setDice] = useState([]);
   return (
     <>
       {/* Home-Header */}
@@ -29,9 +17,11 @@ const Home = () => {
           <div className="row">
             <div className="col-12">
               <div className="pageheader-content text-center">
-              <h2 className="text-center"><b>
-                Design<span style={{ color: "orange" }}>DK</span>
-              </b></h2>
+                <h2 className="text-center">
+                  <b>
+                    Design<span style={{ color: "orange" }}>DK</span>
+                  </b>
+                </h2>
                 <p>
                   Welcome to Design DK, where words come alive and ideas
                   flourish. Dive into a world of captivating stories, insightful
@@ -53,39 +43,37 @@ const Home = () => {
         <div className="row">
           <div className="col">
             <div className="container my-5">
-              <h2 className="text-center"><b>Top Blogs of  
-                Design<span style={{ color: "orange" }}>DK</span>
-              </b></h2>
+              <h2 className="text-center">
+                <b>
+                  Top Blogs of Design<span style={{ color: "orange" }}>DK</span>
+                </b>
+              </h2>
               <div className="row">
-                {dice.map((Element) => {
-                  console.log(Element);
-                  return (
-                    <div className="container mt-5" key={Element.url}>
-                      <div className="row">
-                        <div className="col">
-                        <div className="card text-center">
-                        <div className="card-header">{Element.author}</div>
-                        <div className="card-body d-flex justify-content-between">
-                          <div className="flex">
-                          <img src={Element.urlToImage} alt="Image not Avaliable" width={"500px"}/>
-                          </div>
-                          <div className="align-self-center"  style={{flexDirection:"column"}}>
-                          <h5 className="card-title">{Element.title}</h5>
-                          <p className="card-text">
-                           {Element.description}
-                          </p>
-                          <a href={Element.url} className="btn btn-primary">
-                            Read More
-                          </a>
-                          </div>
-                        </div>
-                        <div className="card-footer text-muted">{Element.publishedAt}</div>
-                      </div>
-                        </div>
+                {currentData.map((item) => (
+                  <div className="col gridey" key={item.id}>
+                    <div className="card my-2" style={{ width: "18rem" }}>
+                      <img
+                        src={item.image}
+                        className="card-img-top"
+                        alt="Image Not Avaliable"
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title">{item.category}</h5>
+                        <p className="card-text">{item.title}</p>
+                        <a
+                          href="/"
+                          className="btn btn-primary"
+                          style={{
+                            background: "orange",
+                            border: "1px solid orange",
+                          }}
+                        >
+                          Go somewhere
+                        </a>
                       </div>
                     </div>
-                  )
-                })}
+                  </div>
+                ))}
               </div>
             </div>
           </div>

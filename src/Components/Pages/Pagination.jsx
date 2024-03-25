@@ -3,7 +3,6 @@ import data from "../../blog.json";
 import "./styles.css";
 
 const itemsPerPage = 9; 
-
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
