@@ -1,25 +1,14 @@
 import React, { useState , useEffect } from "react";
 import PagesHeader from "./PagesHeader";
+import data from "../../blog.json";
 import "./styles.css"
 
 const About = () => {
-  const [dice, setDice] = useState([]);
-  const FetchApi = () => {
-    fetch(
-      "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=441edc7e840d473eb549be2755f91653"
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        let gagan = data.articles;
-        console.log(gagan);
-        setDice(gagan);
-      });
-  };
-  useEffect(() => {
-    FetchApi();
-  }, []);
+  const itemsPerPage = 20;
+  const [currentPage, setCurrentPage] = useState(1);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentData = data.slice(startIndex, endIndex);
   return (
     <div>
       <PagesHeader title={<b>
@@ -43,7 +32,7 @@ const About = () => {
             <br/>
           </div>
           <div className="col-12 col-sm-3">
-          {dice.map((Element) => {
+          {currentData.map((Element) => {
                   console.log(Element);
                   return (
                     <div className="about">
