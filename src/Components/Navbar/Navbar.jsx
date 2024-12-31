@@ -41,7 +41,7 @@ const Navbar = () => {
                 <Link to="/">
                 <h4>
               <b>
-                Design<span style={{ color: "orange" }}>DK</span>
+               <span style={{ color: "orange" }}>B</span>logify
               </b>
             </h4>
                 </Link>

@@ -19,11 +19,11 @@ const Home = () => {
               <div className="pageheader-content text-center">
                 <h2 className="text-center">
                   <b>
-                    Design<span style={{ color: "orange" }}>DK</span>
+                    <span style={{ color: "orange" }}>B</span>logify
                   </b>
                 </h2>
                 <p>
-                  Welcome to Design DK, where words come alive and ideas
+                  Welcome to Blogify, where words come alive and ideas
                   flourish. Dive into a world of captivating stories, insightful
                   perspectives, and thought-provoking articles that traverse the
                   realms of DK's blog's main themes or topics. Our home is a
@@ -68,7 +68,7 @@ const Home = () => {
                             border: "1px solid orange",
                           }}
                         >
-                          Go somewhere
+                          Read More
                         </a>
                       </div>
                     </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import data from "../../blog.json";
 import "./styles.css";
 
-const itemsPerPage = 9; 
+const itemsPerPage = 10; 
 const Pagination = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -18,7 +18,7 @@ const Pagination = () => {
     <div>
       <div className="container">
         <div className="row m-3">
-          {currentData.map((item) => (
+          {currentData.slice(0, itemsPerPage).map((item) => (
             <div className="col gridey" key={item.id}>
               <div className="card my-2" style={{ width: "18rem" }}>
                 <img src={item.image} className="card-img-top" alt="Image Not Avaliable" />
